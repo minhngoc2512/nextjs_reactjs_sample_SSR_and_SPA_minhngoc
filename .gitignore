@@ -1,0 +1,15 @@
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+
+.nuxt
+dist
+.package-lock.json
+.idea
+.next
+.idea/
+.idea/workspace.xml
+.idea/inspectionProfiles/*
+package-lock.json
