@@ -11,7 +11,8 @@ const routes = [
         path: '/*',
         page: '/404'
     }
-]
+];
+
 
 module.exports = {
     arrayRoutes() {

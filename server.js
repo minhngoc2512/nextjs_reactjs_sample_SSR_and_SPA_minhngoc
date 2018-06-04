@@ -9,7 +9,6 @@ const routes = require('./routes');
 app.prepare()
     .then(() => {
         const server = express()
-        console.log(routes.arrayRoutes());
         routes.arrayRoutes().map(item => {
             server.get(item.path, (req, res) => {
                 return app.render(req, res, item.page, req.query)
