@@ -5,21 +5,9 @@ import NoSSR from 'react-no-ssr';
 import {Provider} from 'react-redux'
 
 import {createStore} from 'redux';
-import rootReducer from '../app/redux/reducers/index';
+// import rootReducer from '../app/redux/reducers/index';
 import withRedux from "next-redux-wrapper";
-
-// initialState
-const initialState = {}
-
-// Create store
-// let store =null
-// if(typeof window !='undefined'){
-//     store = createStore(rootReducer, initialState,
-//         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-//     );
-// }else{
-//     store = createStore(rootReducer, initialState);
-// }
+import makeStore from "../app/store"
 
 /**
  * @param {object} initialState
@@ -30,15 +18,15 @@ const initialState = {}
  * @param {string} options.storeKey This key will be used to preserve store in global namespace for safe HMR
  */
 
-const makeStore = (initialState, options) => {
-    if (typeof window != 'undefined') {
-        return createStore(rootReducer, initialState,
-            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-        );
-    } else {
-        return createStore(rootReducer, initialState);
-    }
-};
+// const makeStore = (initialState, options) => {
+//     if (typeof window != 'undefined') {
+//         return createStore(rootReducer, initialState,
+//             window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//         );
+//     } else {
+//         return createStore(rootReducer, initialState);
+//     }
+// };
 
 class Layout extends React.Component {
     render() {
@@ -69,17 +57,11 @@ class MyApp extends App {
         return (
             <Container>
                 <Layout>
-                    <NoSSR>
                         <Header/>
-                    </NoSSR>
                     <Provider store={store}>
-                        <NoSSR>
                         <Component {...pageProps}/>
-                        </NoSSR>
                     </Provider>
-                    <NoSSR>
                         <div><h2>This is footer</h2></div>
-                    </NoSSR>
                 </Layout>
             </Container>
         );

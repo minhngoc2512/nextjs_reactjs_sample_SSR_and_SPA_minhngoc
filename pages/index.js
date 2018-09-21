@@ -9,20 +9,20 @@ import {addTodo} from "../app/redux/actions/actions";
 import {removeTodo} from "../app/redux/actions/actions";
 
 class Index extends React.Component {
+    static async getInitialProps({req,store}){
+        // store.dispatch(addTodo({store_reduxt:'demo_data'}));
+        // store.dispatch(removeTodo({store_reduxt:''}));
+        const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
+        // console.log('user-agent:'+isBot(userAgent));
+        console.log('Page home:'+Math.random());
+        return { userAgent:'sdf',data_prop:'sdsd' };
+    }
     constructor(props) {
         super(props);
         let date = new Date();
         this.state = {
-            data_prop: 'minhngoc'
+            data_prop: 'demo prop'
         }
-    }
-    // getInitialProps running on server render
-    static async getInitialProps({req,store}){
-        store.dispatch(addTodo({store_reduxt:'demo_data'}));
-        // store.dispatch(removeTodo({store_reduxt:''}));
-        const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
-        // console.log('user-agent:'+isBot(userAgent));
-        return { userAgent:'sdf',data_prop:'sdsd' };
     }
     componentDidMount(){
         console.log(publicRuntimeConfig.domain_api);
